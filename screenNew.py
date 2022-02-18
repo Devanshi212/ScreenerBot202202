@@ -22,8 +22,9 @@ wd=webdriver.Chrome(service=ser,options=options)
 count=0
 companyLinks=[]
 # extracting links from all the pages of screener.in
-for x in range(1,10):
-    page = urlopen(f'https://www.screener.in/company/compare/00000034/?page={x}')
+for x in range(1,23):
+    page = urlopen(f'https://www.screener.in/company/compare/00000026/?page={x}')
+    sleep(2)
     soup = BeautifulSoup(page, "lxml")
     
     for link in soup.find_all('a'):
@@ -33,6 +34,7 @@ for x in range(1,10):
             count=count+1
 # print(count)
 # print(companyLinks)
+# print(len(companyLinks))
 
 # extracting links from a different website-moneycontrol.com
 # page = urlopen("https://www.moneycontrol.com/india/stockmarket/sector-classification/marketstatistics/bse/banking-finance.html")
@@ -110,6 +112,6 @@ for link in companyLinks:
     data={'Company Name':companyName,'PE Ratio':pe,'ROE':roe,'Net Profit':netProfit,'EPS':eps,'Cash Flow':cashflow,'Cash Conversion Cycle':cashConversionCycle}
     df=df.append(data,ignore_index=True)
     print(df)
-df.to_csv('2_Technology.csv')
+df.to_csv('2_Finance.csv')
 
 wd.close()
