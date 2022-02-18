@@ -81,7 +81,7 @@ for key,value in sector4.items():
     wd.get(value)
     sleep(3)
     
-    # code can be further optimised by using a sinfle try catch block for consolidated and standalone data
+    # code can be further optimised by using a single try catch block for consolidated and standalone data
     try:
         #cash flow button
         wd.find_element(By .XPATH,'//*[@id="consolidated"]/div[1]/ul/li[4]/a').click()
